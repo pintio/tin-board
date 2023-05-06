@@ -11,6 +11,9 @@ import AdminRoutes from "@routes/AdminRoutes";
 import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
+  navbar: {
+    background: theme.fn.linearGradient(0, "#E2E2E2", "#ffffff"),
+  },
   header: {
     paddingBottom: theme.spacing.md,
     marginBottom: `calc(${theme.spacing.md} * 1.5)`,
@@ -42,7 +45,12 @@ function CustomNavbar() {
   const { pathname } = useRouter();
 
   return (
-    <Navbar height={"auto"} width={{ sm: 300 }} p="md">
+    <Navbar
+      height={"auto"}
+      width={{ sm: 300 }}
+      p="md"
+      className={classes.navbar}
+    >
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
           {/* <MantineLogo size={28} /> */}
