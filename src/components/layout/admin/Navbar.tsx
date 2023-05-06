@@ -14,14 +14,6 @@ const useStyles = createStyles((theme) => ({
   navbar: {
     background: theme.fn.linearGradient(0, "#E2E2E2", "#ffffff"),
   },
-  header: {
-    paddingBottom: theme.spacing.md,
-    marginBottom: `calc(${theme.spacing.md} * 1.5)`,
-    borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]
-    }`,
-  },
-
   footer: {
     paddingTop: theme.spacing.md,
     marginTop: theme.spacing.md,
@@ -52,10 +44,6 @@ function CustomNavbar() {
       className={classes.navbar}
     >
       <Navbar.Section grow>
-        <Group className={classes.header} position="apart">
-          {/* <MantineLogo size={28} /> */}
-          <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
-        </Group>
         {/* {links} */}
         <AdminRoutes pathname={pathname} />
       </Navbar.Section>

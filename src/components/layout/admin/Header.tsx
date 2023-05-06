@@ -1,7 +1,41 @@
-import { Header } from "@mantine/core";
+import {
+  Header,
+  createStyles,
+  Container,
+  Group,
+  Code,
+  rem,
+  Text,
+} from "@mantine/core";
+
+const useStyles = createStyles((theme) => ({
+  headerContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: 0,
+    height: "100%",
+  },
+}));
 function CustomHeader() {
+  const { classes } = useStyles();
   return (
-    <Header height={60} p="xs">
+    <Header sx={{ borderBottom: 0 }} height={48} p="xs">
+      <Container className={classes.headerContainer}>
+        <Group position="apart">
+          {/* <MantineLogo size={28} /> */}
+          <Text
+            sx={{ fontWeight: "bold" }}
+            component="span"
+            variant="gradient"
+            gradient={{ from: "blue", to: "cyan" }}
+            inherit
+          >
+            tin-board
+          </Text>
+          <Code sx={{ fontWeight: 700 }}>v0.1.1</Code>
+        </Group>
+      </Container>
       {/* Header content */}
     </Header>
   );
