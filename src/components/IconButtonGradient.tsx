@@ -3,18 +3,10 @@ import {
   ThemeIcon,
   ActionIcon,
   ActionIconProps,
-  ButtonProps,
-  useComponentDefaultProps,
-  DefaultProps,
-  Button,
-  Box,
   createPolymorphicComponent,
 } from "@mantine/core";
 
 interface MyButtonProps extends ActionIconProps {}
-
-// interface PT extends ActionIconProps, React.ComponentPropsWithoutRef<'button'>
-// interface bu extends ButtonProps {}
 
 const _IconButtonGradient = forwardRef<HTMLButtonElement, MyButtonProps>(
   function _IconButtonGradient({ children, ...props }, ref) {
@@ -36,4 +28,3 @@ export const IconButtonGradient = createPolymorphicComponent<
   "button",
   MyButtonProps
 >(_IconButtonGradient);
-// export default IconButtonGradient;
