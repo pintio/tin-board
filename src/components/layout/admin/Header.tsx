@@ -1,11 +1,11 @@
 import { IconButtonGradient } from "@components/IconButtonGradient";
+import UserSettings from "@components/layout/admin/UserSettings";
 import {
   Header,
   createStyles,
   Container,
   Group,
   Code,
-  rem,
   Text,
 } from "@mantine/core";
 
@@ -16,12 +16,13 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     margin: 0,
     height: "100%",
+    maxWidth: "100%",
   },
 }));
 function CustomHeader() {
   const { classes } = useStyles();
   return (
-    <Header sx={{}} height={48} p="xs">
+    <Header height={48} p="xs">
       <Container className={classes.headerContainer}>
         <Group position="apart">
           {/* <MantineLogo size={28} /> */}
@@ -40,9 +41,9 @@ function CustomHeader() {
           <IconButtonGradient onClick={() => alert("as")}>
             oo
           </IconButtonGradient>
+          <UserSettings />
         </Group>
       </Container>
-      {/* Header content */}
     </Header>
   );
 }
