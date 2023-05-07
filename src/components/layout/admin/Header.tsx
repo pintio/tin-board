@@ -1,3 +1,4 @@
+import { IconButtonGradient } from "@components/IconButtonGradient";
 import {
   Header,
   createStyles,
@@ -20,7 +21,7 @@ const useStyles = createStyles((theme) => ({
 function CustomHeader() {
   const { classes } = useStyles();
   return (
-    <Header sx={{ borderBottom: 0 }} height={48} p="xs">
+    <Header sx={{}} height={48} p="xs">
       <Container className={classes.headerContainer}>
         <Group position="apart">
           {/* <MantineLogo size={28} /> */}
@@ -34,6 +35,11 @@ function CustomHeader() {
             tin-board
           </Text>
           <Code sx={{ fontWeight: 700 }}>v0.1.1</Code>
+        </Group>
+        <Group>
+          <IconButtonGradient onClick={() => alert("as")}>
+            oo
+          </IconButtonGradient>
         </Group>
       </Container>
       {/* Header content */}
