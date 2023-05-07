@@ -1,5 +1,6 @@
-import { IconButtonGradient } from "@components/IconButtonGradient";
-import UserSettings from "@components/layout/admin/UserSettings";
+import { ThemeToggler } from "@components/ThemeToggler";
+import NotificationPopover from "@components/layout/admin/NotificationPopover";
+import SettingsPopover from "@components/layout/admin/SettingsPopover";
 import {
   Header,
   createStyles,
@@ -38,10 +39,9 @@ function CustomHeader() {
           <Code sx={{ fontWeight: 700 }}>v0.1.1</Code>
         </Group>
         <Group>
-          <IconButtonGradient onClick={() => alert("as")}>
-            oo
-          </IconButtonGradient>
-          <UserSettings />
+          <NotificationPopover />
+          <SettingsPopover />
+          <ThemeToggler />
         </Group>
       </Container>
     </Header>
