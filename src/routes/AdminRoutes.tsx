@@ -18,6 +18,7 @@ const useStyles = createStyles((theme, { onlyIcons }: AdminRoutesProps) => ({
     borderRadius: theme.radius.md,
     fontWeight: 500,
     justifyContent: !onlyIcons ? "flex-start" : "center",
+    transition: "width 300ms ease, min-width 300ms ease",
 
     "&:hover": {
       backgroundColor: theme.fn.variant({

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ActionIcon,
-  Code,
   Group,
   Navbar,
   Text,
@@ -11,16 +10,13 @@ import {
 import AdminRoutes from "@routes/AdminRoutes";
 import { useRouter } from "next/router";
 import { useToggle } from "@mantine/hooks";
-import {
-  IconArrowBarLeft,
-  IconMaximize,
-  IconMinimize,
-} from "@tabler/icons-react";
+import { IconArrowBarLeft } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   navbarParent: {
     border: "none",
     boxShadow: theme.shadows.xl,
+    transition: "width 300ms ease, min-width 300ms ease",
   },
   header: {
     borderBottom: `${rem(1)} solid ${
@@ -36,6 +32,7 @@ const useStyles = createStyles((theme) => ({
     padding: `0 ${theme.spacing.sm}`,
   },
   icon: {
+    transition: "all 200ms ease, all 200ms ease",
     "&:hover": {
       backgroundColor: theme.fn.variant({
         variant: "light",
@@ -60,7 +57,7 @@ function CustomNavbar() {
       p="md"
     >
       <Navbar.Section className={classes.header}>
-        <Group className={classes.logoSection} position="apart">
+        <Group noWrap className={classes.logoSection} position="apart">
           {/* <MantineLogo size={28} /> */}
           {isMaximized ? (
             <Text
@@ -78,21 +75,13 @@ function CustomNavbar() {
             variant="subtle"
             radius="md"
             className={classes.icon}
+            sx={{ rotate: isMaximized ? "0" : "180deg" }}
           >
             <IconArrowBarLeft size="1rem" />
           </ActionIcon>
         </Group>
       </Navbar.Section>
       <Navbar.Section grow>
-        <Text
-          hidden={!isMaximized}
-          className={classes.sectionHeading}
-          size="sm"
-          weight={500}
-          color="dimmed"
-        >
-          Management
-        </Text>
         {/* {links} */}
         <AdminRoutes onlyIcons={!isMaximized} pathname={pathname} />
       </Navbar.Section>
