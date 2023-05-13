@@ -14,14 +14,14 @@ const useStyles = createStyles((theme) => ({
         ? theme.colors.dark[1]
         : theme.colors.gray[7],
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-    borderRadius: theme.radius.sm,
+    borderRadius: theme.radius.md,
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+      backgroundColor: theme.fn.variant({
+        variant: "light",
+        color: theme.primaryColor,
+      }).hover,
       color: theme.colorScheme === "dark" ? theme.white : theme.black,
 
       [`& .${getStylesRef("icon")}`]: {
@@ -47,11 +47,11 @@ const useStyles = createStyles((theme) => ({
 
 const adminRoutes = [
   { label: "Home", link: "/home" },
-  { label: "Home2", link: "/home" },
-  { label: "Home3", link: "/home" },
-  { label: "Home4", link: "/home" },
-  { label: "Home5", link: "/home" },
-  { label: "Home6", link: "/home" },
+  { label: "Home2", link: "/home2" },
+  { label: "Home3", link: "/home3" },
+  { label: "Home4", link: "/home4" },
+  { label: "Home5", link: "/home5" },
+  { label: "Home6", link: "/home6" },
 ];
 
 type AdminRoutes = {

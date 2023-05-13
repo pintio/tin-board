@@ -33,6 +33,7 @@ export default function App(props: AppProps) {
           theme={{
             /** Put your mantine theme override here */
             colorScheme,
+            primaryColor: "green",
           }}
         >
           <Component {...pageProps} />
