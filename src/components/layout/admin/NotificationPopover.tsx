@@ -1,22 +1,51 @@
-import { ActionIcon, Menu, Text } from "@mantine/core";
+import { ActionIcon, Menu, Indicator, Text, ScrollArea } from "@mantine/core";
 import { IconBell } from "@tabler/icons-react";
+
+//mock data
+import notificationData from "@mock/notification";
 
 function NotificationPopover() {
   return (
-    <Menu shadow="md" width={200}>
+    <Menu shadow="md" width={350}>
       <Menu.Target>
-        <ActionIcon>
-          <IconBell />
-        </ActionIcon>
+        <Indicator>
+          <ActionIcon>
+            <IconBell />
+          </ActionIcon>
+        </Indicator>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item icon={""}>Settings</Menu.Item>
-        <Menu.Item icon={""}>Messages</Menu.Item>
-        <Menu.Item icon={""}>Gallery</Menu.Item>
+        <ScrollArea h={500}>
+          <Menu.Label>Notifications</Menu.Label>
+          {notificationData?.map(({ id, title, description, isRead }) => (
+            <NotificationItem
+              key={id}
+              title={title}
+              description={description}
+              isRead={isRead}
+            />
+          ))}
+        </ScrollArea>
       </Menu.Dropdown>
     </Menu>
+  );
+}
+
+type NotificationProps = {
+  title: string;
+  description: string;
+  isRead: boolean;
+};
+
+function NotificationItem({ title, description, isRead }: NotificationProps) {
+  return (
+    <Menu.Item icon={""}>
+      <Text fw={500}>{title}</Text>
+      <Text c="dimmed" lineClamp={2}>
+        {description}
+      </Text>
+    </Menu.Item>
   );
 }
 

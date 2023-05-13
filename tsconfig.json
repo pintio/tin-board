@@ -16,7 +16,9 @@
     "incremental": true,
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@routes/*": ["./src/routes/*"],
+      "@mock/*": ["./src/mockData/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.ts"],
