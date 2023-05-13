@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { createStyles, getStylesRef } from "@mantine/core";
+import { IconHome, IconHome2 } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -43,15 +44,23 @@ const useStyles = createStyles((theme) => ({
       },
     },
   },
+  linkIcon: {
+    ref: getStylesRef("icon"),
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[2]
+        : theme.colors.gray[6],
+    marginRight: theme.spacing.sm,
+  },
 }));
 
 const adminRoutes = [
-  { label: "Home", link: "/home" },
-  { label: "Home2", link: "/home2" },
-  { label: "Home3", link: "/home3" },
-  { label: "Home4", link: "/home4" },
-  { label: "Home5", link: "/home5" },
-  { label: "Home6", link: "/home6" },
+  { label: "Home", link: "/home", icon: IconHome2 },
+  { label: "Home2", link: "/home2", icon: IconHome },
+  { label: "Home3", link: "/home3", icon: IconHome },
+  { label: "Home4", link: "/home4", icon: IconHome },
+  { label: "Home5", link: "/home5", icon: IconHome },
+  { label: "Home6", link: "/home6", icon: IconHome },
 ];
 
 type AdminRoutes = {
@@ -70,6 +79,7 @@ function AdminRoutes({ pathname }: AdminRoutes) {
           key={route.label}
           href={route.link}
         >
+          <route.icon className={classes.linkIcon} stroke={1.5} />
           {route.label}
         </Link>
       ))}

@@ -2,6 +2,7 @@
   "name": "tin-board",
   "version": "0.1.0",
   "private": true,
+  "author": "<cpsuthar111@gmail.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

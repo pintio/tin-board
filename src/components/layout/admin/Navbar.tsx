@@ -15,6 +15,12 @@ const useStyles = createStyles((theme) => ({
     marginBottom: `${rem(16)}`,
     paddingBottom: `${rem(4)}`,
   },
+  sectionHeading: {
+    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+  },
+  logoSection: {
+    padding: `0 ${theme.spacing.sm}`,
+  },
 }));
 
 function CustomNavbar() {
@@ -24,13 +30,13 @@ function CustomNavbar() {
   return (
     <Navbar
       height={"auto"}
-      width={{ sm: 200 }}
+      width={{ sm: 240 }}
       className={classes.navbarParent}
       p="md"
     >
       <Navbar.Section className={classes.header}>
         {" "}
-        <Group position="apart">
+        <Group className={classes.logoSection} position="apart">
           {/* <MantineLogo size={28} /> */}
           <Text
             sx={{ fontWeight: "bold" }}
@@ -45,6 +51,14 @@ function CustomNavbar() {
         </Group>
       </Navbar.Section>
       <Navbar.Section grow>
+        <Text
+          className={classes.sectionHeading}
+          size="sm"
+          weight={500}
+          color="dimmed"
+        >
+          Management
+        </Text>
         {/* {links} */}
         <AdminRoutes pathname={pathname} />
       </Navbar.Section>
