@@ -1,7 +1,21 @@
 import React from "react";
-import { Code, Group, Navbar, Text, createStyles, rem } from "@mantine/core";
+import {
+  ActionIcon,
+  Code,
+  Group,
+  Navbar,
+  Text,
+  createStyles,
+  rem,
+} from "@mantine/core";
 import AdminRoutes from "@routes/AdminRoutes";
 import { useRouter } from "next/router";
+import { useToggle } from "@mantine/hooks";
+import {
+  IconArrowBarLeft,
+  IconMaximize,
+  IconMinimize,
+} from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   navbarParent: {
@@ -21,37 +35,57 @@ const useStyles = createStyles((theme) => ({
   logoSection: {
     padding: `0 ${theme.spacing.sm}`,
   },
+  icon: {
+    "&:hover": {
+      backgroundColor: theme.fn.variant({
+        variant: "light",
+        color: theme.primaryColor,
+      }).background,
+      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+        .color,
+    },
+  },
 }));
 
 function CustomNavbar() {
   const { pathname } = useRouter();
   const { classes } = useStyles();
+  const [isMaximized, toggleSideBar] = useToggle([false, true]);
 
   return (
     <Navbar
       height={"auto"}
-      width={{ sm: 240 }}
+      width={{ sm: isMaximized ? 240 : 100 }}
       className={classes.navbarParent}
       p="md"
     >
       <Navbar.Section className={classes.header}>
-        {" "}
         <Group className={classes.logoSection} position="apart">
           {/* <MantineLogo size={28} /> */}
-          <Text
-            sx={{ fontWeight: "bold" }}
-            component="span"
-            variant="gradient"
-            gradient={{ from: "blue", to: "cyan" }}
-            inherit
+          {isMaximized ? (
+            <Text
+              sx={{ fontWeight: "bold" }}
+              component="span"
+              variant="gradient"
+              gradient={{ from: "blue", to: "cyan" }}
+              inherit
+            >
+              tin-board
+            </Text>
+          ) : null}
+          <ActionIcon
+            onClick={() => toggleSideBar()}
+            variant="subtle"
+            radius="md"
+            className={classes.icon}
           >
-            tin-board
-          </Text>
-          <Code sx={{ fontWeight: 700 }}>v0.1.1</Code>
+            <IconArrowBarLeft size="1rem" />
+          </ActionIcon>
         </Group>
       </Navbar.Section>
       <Navbar.Section grow>
         <Text
+          hidden={!isMaximized}
           className={classes.sectionHeading}
           size="sm"
           weight={500}
@@ -60,7 +94,7 @@ function CustomNavbar() {
           Management
         </Text>
         {/* {links} */}
-        <AdminRoutes pathname={pathname} />
+        <AdminRoutes onlyIcons={!isMaximized} pathname={pathname} />
       </Navbar.Section>
 
       {/* uncomment below to add a footer section seperated with a border/line */}

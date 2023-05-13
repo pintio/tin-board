@@ -3,7 +3,7 @@ import React from "react";
 import { createStyles, getStylesRef } from "@mantine/core";
 import { IconHome, IconHome2 } from "@tabler/icons-react";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, { onlyIcons }: AdminRoutesProps) => ({
   link: {
     ...theme.fn.focusStyles(),
     display: "flex",
@@ -17,6 +17,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.md,
     fontWeight: 500,
+    justifyContent: !onlyIcons ? "flex-start" : "center",
 
     "&:hover": {
       backgroundColor: theme.fn.variant({
@@ -50,7 +51,7 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.colors.dark[2]
         : theme.colors.gray[6],
-    marginRight: theme.spacing.sm,
+    marginRight: !onlyIcons ? theme.spacing.sm : 0,
   },
 }));
 
@@ -63,12 +64,13 @@ const adminRoutes = [
   { label: "Home6", link: "/home6", icon: IconHome },
 ];
 
-type AdminRoutes = {
+type AdminRoutesProps = {
   pathname: string;
+  onlyIcons?: boolean;
 };
 
-function AdminRoutes({ pathname }: AdminRoutes) {
-  const { classes, cx } = useStyles();
+function AdminRoutes({ pathname, onlyIcons = false }: AdminRoutesProps) {
+  const { classes, cx } = useStyles({ pathname, onlyIcons });
   return (
     <>
       {adminRoutes.map((route) => (
@@ -80,7 +82,7 @@ function AdminRoutes({ pathname }: AdminRoutes) {
           href={route.link}
         >
           <route.icon className={classes.linkIcon} stroke={1.5} />
-          {route.label}
+          {!onlyIcons ? route.label : null}
         </Link>
       ))}
     </>
