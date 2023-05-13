@@ -2,7 +2,7 @@ import { ActionIcon, Menu, Indicator, Text, ScrollArea } from "@mantine/core";
 import { IconBell } from "@tabler/icons-react";
 
 //mock data
-import notificationData from "@mock/notification";
+import notificationData from "@mock/notification.mock";
 
 function NotificationPopover() {
   return (

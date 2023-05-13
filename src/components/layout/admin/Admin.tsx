@@ -8,6 +8,7 @@ function AdminLayout({ children }: { children: JSX.Element[] | JSX.Element }) {
       padding="md"
       navbar={<Navbar />}
       header={<Header />}
+      layout="alt"
       styles={(theme) => ({
         main: {
           backgroundColor:
