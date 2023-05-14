@@ -34,6 +34,11 @@ export default function App(props: AppProps) {
             /** Put your mantine theme override here */
             colorScheme,
             primaryColor: "green",
+            globalStyles: (theme) => ({
+              "*": {
+                transition: "all 200ms ease, all 200ms ease",
+              },
+            }),
           }}
         >
           <Component {...pageProps} />
