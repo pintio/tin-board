@@ -61,7 +61,7 @@ function CustomNavbar() {
           {/* <MantineLogo size={28} /> */}
           {isMaximized ? (
             <Text
-              sx={{ fontWeight: "bold" }}
+              sx={{ fontWeight: "bold", whiteSpace: "nowrap" }}
               component="span"
               variant="gradient"
               gradient={{ from: "blue", to: "cyan" }}
